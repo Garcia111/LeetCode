@@ -86,7 +86,7 @@ public class MyLinkList {
     public void output(){
         Node temp = head;
         for(int i=0; i<size; i++){
-            System.out.print(i+" ");
+            System.out.print(temp.data+" ");
             temp = temp.next;
         }
         System.out.println();
@@ -97,6 +97,9 @@ public class MyLinkList {
         MyLinkList myLinkList = new MyLinkList();
         myLinkList.insert(0,0);
         myLinkList.insert(1,1);
+        myLinkList.insert(2,2);
+        myLinkList.output();
+        myLinkList.get(2).data = 3;
         myLinkList.output();
         myLinkList.delete(1);
         myLinkList.output();
