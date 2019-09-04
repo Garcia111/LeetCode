@@ -1,11 +1,11 @@
 package datastruct;
 
-public class MyStack {
+public class MyStackByArray {
 
     private int[] array;
     private int size;
 
-    public MyStack(int capacity){
+    public MyStackByArray(int capacity){
         array = new int[capacity];
         size=0;
     }
@@ -37,12 +37,12 @@ public class MyStack {
     }
 
     public static void main(String[] args){
-        MyStack myStack = new MyStack(5);
-        myStack.push(1);
-        myStack.push(2);
-        myStack.push(3);
-        myStack.pop();
-        myStack.pop();
-        myStack.pop();
+        MyStackByArray myStackByArray = new MyStackByArray(5);
+        myStackByArray.push(1);
+        myStackByArray.push(2);
+        myStackByArray.push(3);
+        myStackByArray.pop();
+        myStackByArray.pop();
+        myStackByArray.pop();
     }
 }
