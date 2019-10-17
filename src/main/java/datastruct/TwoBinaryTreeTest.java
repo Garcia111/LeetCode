@@ -115,8 +115,78 @@ public class TwoBinaryTreeTest {
      * @param node
      */
     public static void preOrderTravelWithStack(TreeNode node){
-//        https://blog.csdn.net/qq_28958301/article/details/91590545
+
+        if(node == null){
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        while(node != null || !stack.isEmpty()){
+            while(node != null){
+              stack.push(node);
+              System.out.println(node.data);
+              node = node.leftChild;
+            }
+
+            if(!stack.isEmpty()){
+                node = stack.pop();
+                node = node.rightChild;
+            }
+        }
     }
+
+
+    /**
+     * 二叉树的中序遍历实现: 左 中 右
+     * @param treeNode
+     */
+    public static void midOrderTraveralWithStack(TreeNode treeNode){
+        if(treeNode == null){
+            return;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        while(treeNode != null || !stack.isEmpty()){
+            while(treeNode != null){
+                stack.push(treeNode);
+                treeNode = treeNode.leftChild;
+            }
+            if(!stack.isEmpty()){
+                //如果左子树为空，弹出该左子树的父节点
+                treeNode = stack.pop();
+                System.out.println(treeNode.data);
+                treeNode = treeNode.rightChild;
+            }
+        }
+    }
+
+    /**
+     * 使用栈实现二叉树的后续遍历,
+     * @param treeNode
+     */
+    public static void postOrderTraversalWithStack(TreeNode treeNode){
+        //todo 这个好复杂，搞不懂
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode node = treeNode;
+        TreeNode tempNode = null;
+        while(node != null || !stack.isEmpty()){
+            while(node != null){
+                stack.push(node);
+                node = node.leftChild;
+            }
+            if(!stack.isEmpty()){
+                node = stack.pop();
+                tempNode = node.rightChild;
+                if(tempNode != null){
+                    node.rightChild = null;
+                    stack.push(node);
+                }else{
+                    System.out.println(node.data);
+                }
+                node = tempNode;
+            }
+        }
+    }
+
+
 
 
     public static void main(String[] args) {
@@ -137,14 +207,14 @@ public class TwoBinaryTreeTest {
         System.out.println("中序遍历递归实现：");
         midOrderTravelWithDigui(node);
 
-//        System.out.println("中序遍历栈实现：");
-//        inOrderTraveralByStack(node);
+        System.out.println("中序遍历栈实现：");
+        midOrderTraveralWithStack(node);
 
         System.out.println("后序遍历递归实现：");
         postOrderTravelWithDigui(node);
 
-//        System.out.println("后序遍历栈实现：");
-//        postOrderTraveralByStack(node);
+        System.out.println("后序遍历栈实现：");
+        postOrderTraversalWithStack(node);
 
     }
 }
